@@ -7,6 +7,7 @@
   let editorContent = '';
   let title = '';
   let id = uuidv4();
+  let category = '';
 
   function editDocument(event) {
     const document = $DocumentStore.find(doc => doc.title === event.target.innerHTML);
@@ -18,7 +19,8 @@
     let document = {
       id: id,
       title: title,
-      contents: editorContent
+      contents: editorContent,
+      category: category
     }
     DocumentStore.add(document);
   }
