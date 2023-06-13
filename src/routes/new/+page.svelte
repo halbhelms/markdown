@@ -14,8 +14,13 @@
     title = document.title;
   }
 
-  function saveDocument(event) {
-    console.log(editorContent);
+  function saveNewDocument(event) {
+    let document = {
+      id: id,
+      title: title,
+      contents: editorContent
+    }
+    DocumentStore.add(document);
   }
 
   onMount(async () => {
@@ -51,7 +56,7 @@
       <!-- Quill will be instantiated here -->
     </div>
     
-    <button id="save-button" on:click={saveDocument}>Save</button>
+    <button id="save-button" on:click={saveNewDocument}>Save</button>
 
     <!-- <div id="editor-content">
       <h2>Editor Content:</h2>
