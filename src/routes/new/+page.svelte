@@ -6,7 +6,13 @@
   let editorContent = '';
   let title = '';
 
-  function saveDocument() {
+  function editDocument(event) {
+    const document = $DocumentStore.find(doc => doc.title === event.target.innerHTML);
+    quill.root.innerHTML = document.contents;
+    title = document.title;
+  }
+
+  function saveDocument(event) {
     console.log(editorContent);
   }
 
@@ -27,26 +33,64 @@
   <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 </svelte:head>
 
+<main>
+  <div id="explorer-div">Explorer
+    {#each $DocumentStore as document}
+      <p id="edit-link" on:click={editDocument}>{document.title}</p>
+    {/each}
+  </div>
 
-<div id="title">
-  <input bind:value={title} placeholder="Title" />
-</div>
-<div id="editor">
-  <!-- Quill will be instantiated here -->
-</div>
+  <div id="editor-div">
+    <div id="title">
+      <input bind:value={title} placeholder="Title" />
+    </div>
+    
+    <div id="editor">
+      <!-- Quill will be instantiated here -->
+    </div>
+    
+    <button id="save-button" on:click={saveDocument}>Save</button>
 
-<button on:click={saveDocument}>Save</button>
-
-<p>{title}</p>
-
-<div id="editor-content">
-  <h2>Editor Content:</h2>
-  {editorContent}
-</div>
+    <!-- <div id="editor-content">
+      <h2>Editor Content:</h2>
+      {editorContent}
+    </div> -->
+  </div>
+</main>
 
 
 
 <style>
+  main {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+  }
+
+  button {
+    font-family: Barlow;
+    font-size: 1.2em;
+    padding: 0.5em;
+    border: none;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+  }
+
+  #edit-link {
+    cursor: pointer;
+  }
+
+  #save-button, #editor-content {
+    margin-left: 20px;
+    margin-top: 20px;
+  }
+
+  #explorer-div {
+    background-color: #f0f0f0;
+    padding: 20px;
+    height: 100vh;
+  }
+
   #editor {
     height: 375px;
   }
