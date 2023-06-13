@@ -1,10 +1,12 @@
 <script>
   import { DocumentStore } from '$lib/store'
   import { onMount } from 'svelte';
+  import { v4 as uuidv4 } from 'uuid';
 
   let quill;
   let editorContent = '';
   let title = '';
+  let id = uuidv4();
 
   function editDocument(event) {
     const document = $DocumentStore.find(doc => doc.title === event.target.innerHTML);

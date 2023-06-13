@@ -17,6 +17,7 @@
 	"dependencies": {
 		"easymde": "^2.18.0",
 		"simplemde": "^1.11.2",
-		"svelte-markdown": "^0.2.3"
+		"svelte-markdown": "^0.2.3",
+		"uuid": "^9.0.0"
 	}
 }
