@@ -1,5 +1,6 @@
 <script>
   import { DocumentStore } from '$lib/store'
+  import DocList from '../../lib/components/DocList.svelte'
   import { onMount } from 'svelte';
   import { v4 as uuidv4 } from 'uuid';
 
@@ -42,6 +43,7 @@
   <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 </svelte:head>
 
+<DocList />
 <main>
   <div id="explorer-div">Explorer
     {#each $DocumentStore as document}
