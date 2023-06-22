@@ -1,6 +1,7 @@
-<script>
-   import documents from '../stores/documents'; // this is not a store, but an array
-   import currentLicensor from '../stores/currentLicensor'; // this is not a store, but an object
+   import { documents } from '../../lib/store'; // this is not a store, but an array
+   console.log(Array.isArray(documents)) // true
+   import { currentLicensor } from '../../lib/store'; // this is not a store, but an object
+   console.log(typeof currentLicensor) // object
 
   function getDocumentsForLicensorId() {
     // filter the documents to only those assigned to the current licensor
@@ -17,10 +18,8 @@
 
 
   // return the merged results in a load function
-  export function load({ params }) {
+  export async function load({ params }) {
     return {
       documents: mergedDocuments
     }
   }
-
-</script>

@@ -13,7 +13,9 @@ export const documents = [
     id: 2,
     title: 'When Would I Use a Rule?',
     author: 'Ally Wood',
-    contents: `<p>Rules are useful when you want to create an <i>automatic</i> action on a listing.</p><br /><p>An example: your company has a policy that any listings with the word <b>vintage</b> in the listing text should automatically be <i>ignored.</i></p><br /><p>A rule will ensure this happens.</p><br /><p>Rules can speed up your workflow, letting you more quickly get to fun things.</p>`
+    contents: `<p>Rules are useful when you want to create an <i>automatic</i> action on a listing.</p><br /><p>An example: your company has a policy that any listings with the word <b>vintage</b> in the listing text should automatically be <i>ignored.</i></p><br /><p>A rule will ensure this happens.</p><br /><p>Rules can speed up your workflow, letting you more quickly get to fun things.</p>`,
+    global: true,
+    assignedTo: []
   },
   {
     id: 3,
@@ -47,7 +49,7 @@ export const licensors = [
     name: 'Sony Music',
   },
 ]
-export const currentLicensor = licensors.find(licensor => licensor.name === 'Marvel')
+export const currentLicensor = licensors.find(licensor => licensor.id === 1)
 
 // LicensorStore actions
 function createLicensorStore() {
