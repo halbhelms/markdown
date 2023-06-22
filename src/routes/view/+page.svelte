@@ -1,6 +1,7 @@
 <script>
   import DocList from '$lib/components/DocList.svelte'
   export let data
+  console.log(data.documents)
 </script>
 
 <container class="split-container">

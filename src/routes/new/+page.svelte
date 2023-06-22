@@ -1,8 +1,12 @@
 <script>
   import { DocumentStore } from '$lib/store'
-  import DocList from '../../lib/components/DocList.svelte'
+  import DocList from '$lib/components/DocList.svelte'
   import { onMount } from 'svelte';
   import { v4 as uuidv4 } from 'uuid';
+
+  export let data
+  let documents = data.documents;
+  console.log(documents)
 
   let quill;
   let editorContent = '';
@@ -21,7 +25,8 @@
       id: id,
       title: title,
       contents: editorContent,
-      category: category
+      category: category,
+      global: true
     }
     DocumentStore.add(document);
   }
@@ -43,15 +48,13 @@
   <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 </svelte:head>
 
-<DocList />
 <main>
   <div id="explorer-div">Explorer
-    {#each $DocumentStore as document}
-      <p id="edit-link" on:click={editDocument}>{document.title}</p>
-    {/each}
+    <DocList {documents} />
   </div>
-
   <div id="editor-div">
+    {$DocumentStore.length}
+    {$DocumentStore[$DocumentStore.length-1].global}
     <div id="title">
       <input bind:value={title} placeholder="Title" />
     </div>
@@ -67,6 +70,8 @@
       {editorContent}
     </div> -->
   </div>
+
+  
 </main>
 
 
@@ -74,7 +79,7 @@
 <style>
   main {
     display: grid;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 250px 100%;
   }
 
   button {

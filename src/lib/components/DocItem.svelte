@@ -9,7 +9,7 @@
 
 <style>
   a {
-    color: black;
+    color: inherit;
     text-decoration: none;
     font-size: 1em;
     display: inline-block;
@@ -21,6 +21,7 @@
   }
 
   .doc-item {
-   margin-bottom: 6px;
+   margin-top: 6px;
+   margin-left: 12px;
   }
 </style>

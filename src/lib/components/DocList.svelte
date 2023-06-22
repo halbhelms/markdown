@@ -19,3 +19,16 @@
 {/each}
 </div>
 
+<style>
+  .doc-list {
+    background-color: #222222;
+    color: #ccc;
+    width: 250px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+  }
+</style>
+
