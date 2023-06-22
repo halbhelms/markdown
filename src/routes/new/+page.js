@@ -20,8 +20,8 @@
 
 
   // return the merged results in a load function
-  export async function load({ params }) {
+  export function load({ params }) {
     return {
-      documents: mergedDocuments
+      documents: [...getGlobalDocuments(), ...getDocumentsForLicensorId()]
     }
   }

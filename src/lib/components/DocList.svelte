@@ -3,11 +3,12 @@
   import DocItem from '$lib/components/DocItem.svelte';
 
   export let documents;
-  const globalDocs = documents.filter(doc => doc.global === true);
-  const licensorDocs = documents.filter(doc => doc.global === false);
+  $: globalDocs = documents.filter(doc => doc.global === true);
+  $: licensorDocs = documents.filter(doc => doc.global === false);
 </script>
 
 <div class="doc-list">
+{documents.length}
 <!-- display globally accessible docs -->
 {#each globalDocs as document}
   <DocItem {document} />

@@ -5,8 +5,7 @@
   import { v4 as uuidv4 } from 'uuid';
 
   export let data
-  let documents = data.documents;
-  console.log(documents)
+  $: documents = $DocumentStore;
 
   let quill;
   let editorContent = '';
@@ -26,8 +25,8 @@
       title: title,
       contents: editorContent,
       category: category,
-      global: true
-    }
+      global: false,
+      assignedTo: [1]    }
     DocumentStore.add(document);
   }
 
@@ -53,7 +52,7 @@
     <DocList {documents} />
   </div>
   <div id="editor-div">
-    {$DocumentStore.length}
+    {documents.length}
     {$DocumentStore[$DocumentStore.length-1].global}
     <div id="title">
       <input bind:value={title} placeholder="Title" />
