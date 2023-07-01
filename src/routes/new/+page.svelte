@@ -11,7 +11,16 @@
   let editorContent = '';
   let title = '';
   let id = uuidv4();
-  let category = '';
+  let global = true;
+  
+  function toggleGlobal(event) {
+    if (event.target.checked) {
+      category = 'global';
+    } else {
+      category = '';
+      assignedTo = [...document.assignedTo, 1];
+    }
+  }
 
   function editDocument(event) {
     const document = $DocumentStore.find(doc => doc.title === event.target.innerHTML);
@@ -21,12 +30,13 @@
 
   function saveNewDocument(event) {
     let document = {
-      id: id,
-      title: title,
+      id,
+      title,
       contents: editorContent,
-      category: category,
-      global: false,
-      assignedTo: [1]    }
+      category,
+      global,
+      assignedTo
+    }
     DocumentStore.add(document);
   }
 
@@ -62,6 +72,7 @@
       <!-- Quill will be instantiated here -->
     </div>
     
+    <input type="checkbox" value="global" bind:checked={category} />
     <button id="save-button" on:click={saveNewDocument}>Save</button>
 
     <!-- <div id="editor-content">
